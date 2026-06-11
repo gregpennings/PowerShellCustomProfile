@@ -1,3 +1,17 @@
+# --- Auto-update Admin module from GitHub ---
+$AdminModulePath = 'C:\Program Files\PowerShell\7\Modules\Admin'
+
+if (Test-Path $AdminModulePath) {
+    try {
+        git -C $AdminModulePath pull --quiet
+    } catch {
+        Write-Host "Admin module update failed: $PSItem" -ForegroundColor Yellow
+    }
+}
+
+Import-Module Admin -Force
+# --- End Admin module auto-update ---
+
 Write-Host -ForegroundColor Blue "To edit Current User Current Host Profile"
 Write-Host "& 'C:\Program Files\Notepad++\notepad++.exe' C:\Users\admgpennings\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 
